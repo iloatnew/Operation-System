@@ -1,0 +1,21 @@
+1. Im Laufe der Aufgabe sollen mehrere Threads Speicher anfragen und sich wieder schlafen legen. Beschreibt in eigenen Worten, wie in dieser Situation ein Deadlock zustande kommen kann. Gebt dabei insbesondere an, wie die vier Bedingungen für einen Deadlock dabei erfüllt werden.
+die vier Bediegungen sind:
+1. Exklusive Belegung von Betriebsmitteln („mutual exclusion“)
+	–die umstrittenen Betriebsmittel sind nur unteilbar nutzbar
+2. Nachforderung von Betriebsmitteln („hold and wait“)
+	–die umstrittenen Betriebsmittel sind nur schrittweise belegbar
+3. Kein Entzug von Betriebsmitteln („no preemption“)
+	–die umstrittenen Betriebsmittel sind nicht rückforderbar
+4. Zirkuläres Warten („circular wait“)
+	–Eine geschlossene Kette wechselseitig wartender Prozesse
+
+Zu 1: Jeder Thread braucht seinen Speicherbereich, den er angefordert hat, komplett für sich und kann ihn nicht mit anderen Threads teilen, bzw, das Problem lässt sich nicht im selben Speicherbereich berechnen. Deswegen ist er unteilbar.
+
+Zu 2: Jeder Thread stellt schrittweise Anfragen für mehr Speicherplatz, und hat immer eine weitere Anfrage (bis auf die letzte), weshalb immer eine Gefahr von nicht genug Speicher existent ist.
+
+Zu 3: Der Thread muss seine Bearbeitung erfolgreich abschließen, und kann nicht nach Beginn der Bearbeitung Speicherplatz wieder freigeben, bis er seine Aufgabe fertig berechnet hat. Dadurch kann er keine Systemressourcen zurück geben, ohne die Bearbeitung komplett abzubrechen, und kein Resultat zurückzugeben.
+
+Zu 4: Wenn alle Threads in einem Zustand sind, dass sie mehr Speicher anfragen, aber jede Anfrage mehr Speicher benötigt, als momentan zur Verfügung steht, dann ist es nicht möglich, eine Anfrage aufzulösen, und alle warten bis die komplette Bearbeitung nicht beendet wurde. -> Deadlock.
+
+2. Gebe eine Möglichkeit an, eine Voraussetzung für einen Deadlock in dieser Situation zu entschärfen.
+Um in dieser Situation dafür zu sorgen, dass kein Deadlock entstehen kann, muss man bei Anfrage eines Threads für mehr Speicherplatz überprüfen, ob die Summe aller zukünftiger Speicherplatzanfragen weniger Speicher benötigt als momentan zur Verfügung steht. Ist dem nicht so, dann wird der Thread schlafen gelegt, bis dies möglich ist. Dadurch wird garantiert, dass selbst in einer Situation, wo fast alle Threads mehr Speicherplatz benötigen als momentan zur Verfügung steht, es immer mind. einen gibt, der die Bearbeitung fortsetzen kann, und bei dessen Beendigung und Speicherfreigabe es wieder mind. 1 weiteren gibt, der nun auch sein Bearbeitung fortsetzen kann etc.

@@ -1,0 +1,24 @@
+1.1.
++---+-------------------------------+
+| A |  CCCIIII      CCCIIII      CCC|   C: Prozess nutzt die CPU
+| B |       CCCCCCIIIII  CCCCCCIIIII|   I: Prozess führt I/O-Operationen durch
+| C |CCII CCII    CCII CCII    CCII |
++---+-------------------------------+
+
+1.2. Welches Problem birgt Shortest-Process-Next als Scheduling-Verfahren?
+Das Hauptproblem besteht in der Vorhersage der Laufzeiten. Beim Dialogbetrieb kennt der CPS die Stoßlängen des Prozesses nicht. Dort müssen vom Entwickler entweder Time-Limits implementiert werden, oder der CPU muss durch vorherige Stoßlängen eine Schätzung durchführen.
+Ein weiteres Problem ist die Gefahr der Aushungerung (starvation) CPU-lastiger Prozesse. Die größeren gewichtigen Prozessen werden immer später bearbeitet. 
+
+2.1.
+1. Was sind Race-Conditions und warum sind sie gefährlich?
+Eine Race Condition bezeichnet die Situationen, in denen mindestens zwei oder mehrere Prozesse auf gleiche Daten zugreifen und/oder verändern. Dadurch kann durch zufällige Threadwechsel nicht garantiert werden, dass die Werte sich nicht plötzlich in anderen Threads verändert werden, und können bei jedem ausführen anders sein. Das Ergebnis ist damit also nicht vorhersehbar und möglicherweise inkorrekt.
+
+2. Was ist aktives Warten und welche Probleme bringt es mit sich?
+kann selbst keine Änderung der Bedingung herbeiführen, auf die er wartet
+behindert daher unnütz andere Prozesse, die sinnvolle Arbeit leisten könnten
+schadet damit letztlich auch sich selbst:
+– Je länger der Prozess den Prozessor für sich behält, umso länger muss
+er darauf warten, dass andere Prozesse die Bedingung erfüllen, auf die
+er selbst wartet.
+
+

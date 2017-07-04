@@ -1,0 +1,28 @@
+1 Best Fit
+	|----------------| 16 MB freier Speicher
+	|AAAAA-----------| A belegt 5 MB
+	|AAAAABBBBBB-----| B belegt 6 MB
+	|AAAAABBBBBBAA---| A belegt 2 MB
+	|AAAAA------AA---| B gibt seinen peicher frei
+	|AAAAA------AACC-| C belegt 2 MB
+	|AAAAACCCCC-AACC-| C belegt 5 MB
+	|AAAAACCCCC-AACC-| D fordet 2 MB, wird abgelehnt
+
+2 Verschnitt
+	2.1 Was ist Verschnitt?
+	Es gibt zwei Typ von Verschnitt: Externer Verschnitt und Interner Verschnitt.
+	Externer Verschnitt ist:
+	– Außerhalb der zugeteilten Speicherbereich entstehen Speicherfragmente, die nicht mehr genutzt werden können.
+	Interner Verschnitt ist:
+	– Innerhalb der zugeteilten Speicherbereiche gibt es ungenutzten Speicher.
+
+	2.2 Wie kommt er z.B. bei der obigen Best Fit-Strategie zustande?
+	Es passiert auch bei der obigen Best Fit-Strategie. Es gibt insgesamt 2 MB freie Speicherplätze aber die Anforderung des 2 MB von 		Prozess D wird abgelehnt, da die 2 MB Plätze in zwei 1 MB Verschnitt geteilt wurde.
+
+	2.3 Kann es Bei dem Buddy-Verfahren auch zu Verschnitt kommen?
+	Er kann auch bei Buddy passieren, da die Anforderungen auf die nächstgrößere Zweierpotenz aufgerundet werden. 
+	Das bedeutet, es könnteinnerhalb der zugeteilten Zweierpotenz größeren Speicherbereihe ungenutzten Speicher geben.
+
+3 Buddy Verfahren
+	3.1 Worin liegt der Vorteil bei Einsatz des Buddy Verfahrens? 
+	3.2
