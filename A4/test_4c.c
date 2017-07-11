@@ -47,6 +47,7 @@ int main(void)
 	printf("\nGebe E frei\n");
 	buddy_fast_free(addr_e);
 	memory_dump();
+	assert(bst[8] == 0);
 
 	printf("\nH: Alloziere nichts (0B), erwarte Nullpointer -> %p\n",
 		buddy_alloc('H', 0));

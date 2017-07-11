@@ -175,7 +175,7 @@ void memory_dump_recursive(node_t node)
 		if (*node == NODE_SPLIT)
 			errx(1, "Speicherverwaltung inkonsistent");
 		if (*node == NODE_FREE)
-			putchar(' ');
+			putchar(' ');  //‘ ’
 		else
 			putchar(*node);
 	} else if (*node > NODE_FREE) {
